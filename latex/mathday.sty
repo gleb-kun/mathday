@@ -1,0 +1,59 @@
+\ProvidesPackage{mathday}[2024/11/15 Math Day Package]
+
+% Верхний колонтитул с надписью 
+\RequirePackage{fancyhdr}
+\fancyhf{}
+\fancyhead[L]{\footnotesize{\noindent{Санкт-Петербургский государственный университет}}} % Выра текст в верхнем колонтитуле
+\fancyhead[RO]{\footnotesize{\noindent{День математика 2024}}}
+\renewcommand{\headrulewidth}{0.4pt} % Линия под колонтитулом
+\renewcommand{\footrulewidth}{0pt} % Без линии в нижнем колонтитуле
+\pagestyle{fancy} % Установка fancy-стиля для всъ
+
+% Определение команды для списка авторов
+\newcommand{\setauthors}[1]{
+	\renewcommand{\@setauthors}{
+		\begin{center}
+			\textbf{#1}
+		\end{center}
+	}
+}
+\newcommand{\@setauthors}{}
+
+% Определение команды для сведений об авторах
+\newcommand{\organization}[1]{
+	\renewcommand{\@organization}{
+		\begin{center}
+			\textit{#1}
+		\end{center}
+	}
+}
+\newcommand{\@organization}{}
+
+% Определение команды для названия статьи
+\newcommand{\settitle}[1]{
+	\renewcommand{\@settitle}{
+		\begin{center}
+			\textbf{\Large #1}
+		\end{center}
+	}
+}
+\newcommand{\@settitle}{}
+
+% Вставка
+\AtBeginDocument{%
+	\@setauthors
+	\@organization
+	\@settitle
+}
+
+\newcommand{\granttext}{}
+\newcommand{\setgrant}[1]{\renewcommand{\granttext}{#1}}
+
+% Хук перед списком литературы
+\AtBeginEnvironment{thebibliography}{
+	\par\vspace{10pt}
+	\noindent\textit{\granttext}.
+	\par\vspace{0pt}
+}
+
+\endinput

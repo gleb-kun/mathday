@@ -1,0 +1,8 @@
+# Directories
+.idea
+
+# Files
+/latex/*.aux
+/latex/*.log
+/latex/*.pdf
+/latex/*.synctex.gz
